@@ -5,7 +5,6 @@
     "@semantic-release/npm",
     ["@semantic-release/exec", {
       "prepareCmd": "./update-package-version.sh ${nextRelease.version}"
-    }],
-    "@semantic-release/github"
+    }]
   ]
 }
