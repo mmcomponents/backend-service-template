@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node src/bin/www",
+    "dev": "nodemon src/bin/www",
     "lint": "eslint --ext .js src/ ",
     "test": "jest",
     "semantic-release": "semantic-release"
@@ -28,6 +29,7 @@
     "husky": "^4.2.5",
     "jest": "^26.0.1",
     "lint-staged": "^8.1.5",
+    "nodemon": "^2.0.4",
     "semantic-release": "^17.1.2"
   },
   "husky": {
