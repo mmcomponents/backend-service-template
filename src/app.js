@@ -1,0 +1,19 @@
+require('dotenv/config');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+
+const appRoutes = require('./routes');
+const cors = require('./core/cors');
+
+const app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(cors);
+
+app.use('/', appRoutes);
+
+module.exports = app;
