@@ -1,11 +1,12 @@
 {
   "name": "backend-service-toolkit",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "private": true,
   "scripts": {
     "start": "node src/bin/www",
     "lint": "eslint --ext .js src/ ",
-    "test": "jest"
+    "test": "jest",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -24,7 +25,8 @@
     "eslint-plugin-jest": "^24.0.1",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
-    "lint-staged": "^8.1.5"
+    "lint-staged": "^8.1.5",
+    "semantic-release": "^17.1.2"
   },
   "husky": {
     "hooks": {
@@ -37,5 +39,12 @@
       "npm run lint",
       "git add"
     ]
-  }
+  },
+  "repository": {
+    "url": "https://github.com/mmcomponents/backend-service-toolkit"
+  },
+  "bugs": {
+    "url": "https://github.com/mmcomponents/backend-service-toolkit/issues"
+  },
+  "license": "MIT"
 }
