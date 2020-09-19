@@ -1,6 +1,6 @@
 {
   "name": "backend-service-toolkit",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "private": true,
   "scripts": {
     "start": "node src/bin/www",
