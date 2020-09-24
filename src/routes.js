@@ -1,15 +1,19 @@
 const express = require('express');
 const modules = require('./modules');
+const { name, version} = require('../package.json');
 
 const router = express.Router();
 
-/* GET Status Health Check. */
 router.get('/status', (req, res) => {
-  res.status(200).json({ name: 'gateway-service' });
+  res.status(200).json({ name, version, message: 'Service working' });
 });
 
-modules.forEach(module => {
-  router.use(`/${module.path}`, module.router)
+router.get('/health-check', (req, res) => {
+  res.send(200);
+});
+
+modules.forEach((module) => {
+  router.use(`/${module.path}`, module.router);
 });
 
 module.exports = router;
