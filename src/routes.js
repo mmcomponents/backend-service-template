@@ -1,6 +1,6 @@
 const express = require('express');
 const modules = require('./modules');
-const { name, version} = require('../package.json');
+const { name, version } = require('../package.json');
 
 const router = express.Router();
 

@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const helmet = require('helmet');
 
-
 const appRoutes = require('./routes');
 const cors = require('./core/cors/cors');
 const connectToDatabase = require('./core/database/connection');
