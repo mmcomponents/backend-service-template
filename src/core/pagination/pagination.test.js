@@ -6,7 +6,8 @@ function getReqMock({ pageSize, pageNumber } = {}) {
       pageSize: pageSize || 10,
       pageNumber: pageNumber || 2,
       sortBy: 'name',
-      text: 'text-search',
+      sortType: 'ASC',
+      textSearch: 'text-search',
     },
   };
 }
@@ -34,7 +35,8 @@ describe('Pagination', () => {
       pageNumber: 2,
       pageSize: 10,
       sortBy: 'name',
-      text: 'text-search',
+      sortType: 'ASC',
+      textSearch: 'text-search',
       totalPages: 4,
     });
   });
@@ -49,7 +51,8 @@ describe('Pagination', () => {
       pageNumber: 2,
       pageSize: 10,
       sortBy: 'name',
-      text: 'text-search',
+      sortType: 'ASC',
+      textSearch: 'text-search',
       totalPages: 5,
     });
   });
@@ -60,7 +63,8 @@ describe('Pagination', () => {
         pageSize: 10,
         pageNumber: 1,
         sortBy: 'age',
-        text: 'text-search',
+        sortType: 'ASC',
+        textSearch: 'text-search',
       },
     });
 
@@ -71,6 +75,98 @@ describe('Pagination', () => {
     expect(pagination.pageNumber).toBe(1);
     expect(pagination.totalPages).toBe(0);
     expect(pagination.sortBy).toBe('age');
-    expect(pagination.text).toBe('text-search');
+    expect(pagination.sortType).toBe('ASC');
+    expect(pagination.textSearch).toBe('text-search');
+  });
+  it('should get query skip when page number is 1', () => {
+    const pagination = new Pagination({
+      query: {
+        pageSize: 10,
+        pageNumber: 1,
+        sortBy: 'age',
+        sortType: 'ASC',
+        textSearch: 'text-search',
+      },
+    });
+
+    expect(pagination.getQuerySkip()).toBe(0);
+  });
+  it('should get query skip when page number is bigger than 1', () => {
+    const pagination = new Pagination({
+      query: {
+        pageSize: 10,
+        pageNumber: 3,
+        sortBy: 'age',
+        sortType: 'ASC',
+        textSearch: 'text-search',
+      },
+    });
+
+    expect(pagination.getQuerySkip()).toBe(20);
+  });
+  it('should get query limit when page number is bigger than 1', () => {
+    const pagination = new Pagination({
+      query: {
+        pageSize: 10,
+        pageNumber: 2,
+        sortBy: 'age',
+        sortType: 'ASC',
+        textSearch: 'text-search',
+      },
+    });
+
+    expect(pagination.getQueryLimit()).toBe(10);
+  });
+  it('should get sort configuration when sort asc', () => {
+    const pagination = new Pagination({
+      query: {
+        pageSize: 10,
+        pageNumber: 2,
+        sortBy: 'age',
+        sortType: 'ASC',
+        textSearch: 'text-search',
+      },
+    });
+
+    expect(pagination.getSortConfiguration()).toEqual({ age: 1 });
+  });
+
+  it('should get sort configuration when sort desc', () => {
+    const pagination = new Pagination({
+      query: {
+        pageSize: 10,
+        pageNumber: 2,
+        sortBy: 'age',
+        sortType: 'DESC',
+        textSearch: 'text-search',
+      },
+    });
+
+    expect(pagination.getSortConfiguration()).toEqual({ age: -1 });
+  });
+
+  it('should get sort configuration when sort type is not provide', () => {
+    const pagination = new Pagination({
+      query: {
+        pageSize: 10,
+        pageNumber: 2,
+        sortBy: 'age',
+        textSearch: 'text-search',
+      },
+    });
+
+    expect(pagination.getSortConfiguration()).toEqual({ age: 0 });
+  });
+
+  it('should get sort configuration when sort options are not provide', () => {
+    const pagination = new Pagination({
+      query: {
+        pageSize: 10,
+        pageNumber: 2,
+        textSearch: 'text-search',
+      },
+    });
+
+    expect(pagination.getSortConfiguration()).toEqual({ });
   });
 });
