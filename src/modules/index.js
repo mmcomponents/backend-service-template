@@ -1,8 +1,8 @@
 const { lstatSync, readdirSync } = require('fs');
 const { join } = require('path');
 
-function isWebService({ type }) {
-  return type === 'web-service';
+function isWebService(directory) {
+  return directory.includes('web-service');
 }
 const isDirectory = (source) => lstatSync(source).isDirectory();
 const getDirectories = (source) => readdirSync(source)
