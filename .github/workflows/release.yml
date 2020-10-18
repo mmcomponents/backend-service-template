@@ -1,25 +1,23 @@
 name: Release
+
 on:
   push:
     branches:
       - master
+
 jobs:
-  release:
-    name: Release
-    runs-on: ubuntu-18.04
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
+          ref: 'master'
+          token: ${{secrets.RELEASE_IT}}
+      - uses: actions/setup-node@v1
         with:
           node-version: 14
-      - name: Install dependencies
-        run: npm ci
-      - name: Release
+      - run: git config --global user.email "<>"
+      - run: git config --global user.name "Github Action Bot"
+      - run: ./scripts/release.sh
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.npm_token }}
-        run: npx semantic-release
+          GITHUB_TOKEN: ${{secrets.RELEASE_IT}}
