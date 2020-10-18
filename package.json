@@ -7,8 +7,7 @@
     "lint": "eslint --ext .js src/ ",
     "test": "jest",
     "release": "release-it --ci",
-    "release:preview": "release-it --ci --dry-run",
-    "release:action": "./scripts/releash.sh"
+    "release:preview": "release-it --ci --dry-run"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
