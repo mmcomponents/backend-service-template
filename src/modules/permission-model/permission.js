@@ -11,7 +11,7 @@ class Permission {
     return this.model.exists(filters);
   }
 
-  count({filters = {}}) {
+  count({ filters = {} }) {
     return new Promise((resolve, reject) => {
       this.model.countDocuments(filters, (err, count) => (err ? reject(err) : resolve(count)));
     });

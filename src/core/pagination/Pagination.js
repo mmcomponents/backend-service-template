@@ -60,17 +60,20 @@ class Pagination {
       totalPages: this._totalPages,
     };
   }
+
   getSortConfiguration() {
     if (this._sortBy) {
       return {
-        [this._sortBy]: getSortType(this._sortType)
-      }
+        [this._sortBy]: getSortType(this._sortType),
+      };
     }
     return {};
   }
+
   getQuerySkip() {
     return this._pageSize * (this._pageNumber - 1);
   }
+
   getQueryLimit() {
     return this._pageSize;
   }

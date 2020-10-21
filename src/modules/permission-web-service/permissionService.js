@@ -2,7 +2,7 @@ const permissionRepository = require('./permissionRepository');
 
 async function getPermissions({ filters, pagination }) {
   try {
-    pagination.count = await permissionRepository.countPermissions({filters});
+    pagination.count = await permissionRepository.countPermissions({ filters });
     const permissions = await permissionRepository.getPermissions({ filters, pagination });
     return {
       statusCode: 200,

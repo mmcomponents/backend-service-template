@@ -10,7 +10,7 @@ function getPermissionsFilters(req) {
   if (req.query.slug) {
     filters.slug = req.query.slug;
   }
-  if(req.query.enabled) {
+  if (req.query.enabled) {
     filters.enabled = req.query.enabled !== 'false';
   }
   console.log(filters);

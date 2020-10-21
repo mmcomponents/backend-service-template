@@ -11,7 +11,7 @@ function normalizeDocument(document) {
 }
 
 async function countPermissions({ filters }) {
-  return Permission.count({filters});
+  return Permission.count({ filters });
 }
 
 async function getPermissions({ filters, pagination }) {
