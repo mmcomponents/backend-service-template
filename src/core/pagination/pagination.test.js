@@ -28,7 +28,7 @@ describe('Pagination', () => {
   it('should set pagination count when count is multiple from pageSize', () => {
     const pagination = new Pagination(getReqMock());
 
-    pagination.count = 40;
+    pagination.setCount(40);
 
     expect(pagination.toJSON()).toEqual({
       count: 40,
@@ -44,7 +44,7 @@ describe('Pagination', () => {
   it('should set pagination count when count is multiple from pageSize', () => {
     const pagination = new Pagination(getReqMock());
 
-    pagination.count = 41;
+    pagination.setCount(41);
 
     expect(pagination.toJSON()).toEqual({
       count: 41,
@@ -68,7 +68,7 @@ describe('Pagination', () => {
       },
     });
 
-    pagination.count = 0;
+    pagination.setCount(0);
 
     expect(pagination.count).toBe(0);
     expect(pagination.pageSize).toBe(10);

@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+
 function getSortType(sortType) {
   if (sortType) {
     return sortType === 'ASC' ? 1 : -1;
@@ -40,13 +42,13 @@ class Pagination {
     return this._count;
   }
 
-  set count(value) {
-    this._count = value;
-    this._totalPages = Math.ceil(value / this._pageSize);
-  }
-
   get totalPages() {
     return this._totalPages;
+  }
+
+  setCount(value) {
+    this._count = value;
+    this._totalPages = Math.ceil(value / this._pageSize);
   }
 
   toJSON() {
