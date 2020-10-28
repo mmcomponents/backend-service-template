@@ -11,7 +11,7 @@ module.exports = {
   coveragePathIgnorePatterns: [
     '/node_modules/',
     '/src/modules/.+-model/',
-    'index.js$',
+    'httpError.js$',
     'routes.js$',
   ],
   coverageReporters: [

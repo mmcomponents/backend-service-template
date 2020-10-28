@@ -170,7 +170,7 @@ describe('permissionRepository', () => {
 
       expect(updatedPermission).toEqual(getNormalizedPermissionMock());
       expect(Permission.updateDocumentById).toHaveBeenCalledTimes(1);
-      expect(Permission.updateDocumentById).toHaveBeenCalledWith(id,options);
+      expect(Permission.updateDocumentById).toHaveBeenCalledWith(id, options);
     });
   });
 

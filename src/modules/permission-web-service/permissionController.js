@@ -2,7 +2,6 @@ const Pagination = require('../../core/pagination');
 const permissionService = require('./permissionService');
 
 function getPermissionsFilters(req) {
-  console.log(req.query);
   const filters = {};
   if (req.query.name) {
     filters.name = req.query.name;
@@ -13,32 +12,37 @@ function getPermissionsFilters(req) {
   if (req.query.enabled) {
     filters.enabled = req.query.enabled !== 'false';
   }
-  console.log(filters);
   return filters;
 }
 
-async function getPermissions(req, res, next) {
+async function getPermissions(req, res) {
   const pagination = new Pagination(req);
   const filters = getPermissionsFilters(req);
   try {
-    const { statusCode, permissions } = await permissionService.getPermissions({ filters, pagination });
+    const {
+      statusCode,
+      permissions,
+    } = await permissionService.getPermissions({ filters, pagination });
     res.status(statusCode).json({ permissions, pagination: pagination.toJSON() });
   } catch (error) {
     res.status(error.statusCode).json({ errorMessage: error.message });
   }
 }
 
-async function getPermissionById(req, res, next) {
+async function getPermissionById(req, res) {
   const { id } = req.params;
   try {
-    const { permission, statusCode } = await permissionService.getPermissionById(id);
+    const {
+      permission,
+      statusCode,
+    } = await permissionService.getPermissionById(id);
     res.status(statusCode).json(permission);
   } catch (error) {
-    res.status(error.statusCode).json({ errorMessage: error.message });
+    res.status(INTERNAL_SERVER_ERROR).json({ errorMessage: error.message });
   }
 }
 
-async function createPermission(req, res, next) {
+async function createPermission(req, res) {
   try {
     const {
       name, slug, description, enabled,
@@ -52,7 +56,7 @@ async function createPermission(req, res, next) {
   }
 }
 
-async function updatePermissionById(req, res, next) {
+async function updatePermissionById(req, res) {
   try {
     const { id } = req.params;
     const { statusCode, permission } = await permissionService.updatePermissionById(id, req.body);
@@ -62,7 +66,7 @@ async function updatePermissionById(req, res, next) {
   }
 }
 
-async function deletePermissionById(req, res, next) {
+async function deletePermissionById(req, res) {
   try {
     const { id } = req.params;
     const { statusCode } = await permissionService.deletePermissionById(id);
