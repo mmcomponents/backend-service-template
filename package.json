@@ -1,6 +1,6 @@
 {
   "name": "backend-service-toolkit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "start": "node src/bin/www",
     "dev": "nodemon src/bin/www",
