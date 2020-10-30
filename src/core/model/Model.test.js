@@ -184,7 +184,6 @@ describe('Model', () => {
     const fields = getFieldsMock();
     const modelInstance = new Model({ model, fields });
 
-
     expect.assertions(1);
     return expect(modelInstance.getById(id)).rejects.toEqual(error);
   });
@@ -205,7 +204,6 @@ describe('Model', () => {
     const args = { args: true };
     const fields = getFieldsMock();
     const modelInstance = new Model({ model, fields });
-
 
     expect.assertions(1);
     return expect(modelInstance.create(args)).rejects.toEqual(new Error('mock-error'));

@@ -30,7 +30,6 @@ function deletePermissionById(id) {
   return Permission.deleteDocumentById(id);
 }
 
-
 module.exports = {
   countPermissions,
   getPermissions,

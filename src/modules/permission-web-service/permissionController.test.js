@@ -33,7 +33,6 @@ function getReqMock({ query, body, params } = {}) {
   };
 }
 
-
 function getIdMock() {
   return 'mock-id';
 }
@@ -54,7 +53,6 @@ function getPermissionMock() {
     updatedAt: '2020-10-13T00:16:59.304Z',
   };
 }
-
 
 function getPermissionsMock() {
   return [getPermissionMock()];
