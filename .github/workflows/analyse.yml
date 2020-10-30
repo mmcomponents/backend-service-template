@@ -8,11 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: 'master'
+          ref: ${{github.head_ref}}
           token: ${{secrets.RELEASE_IT}}
       - uses: actions/setup-node@v1
         with:
           node-version: 14
       - run: ./scripts/analyse.sh
-        env:
-          GITHUB_TOKEN: ${{secrets.RELEASE_IT}}
+      - run: echo ${{github.base_ref}}
+      - run: echo ${{github.head_ref}}
