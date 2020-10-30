@@ -10,7 +10,9 @@ module.exports = {
   coverageDirectory: 'coverage',
   coveragePathIgnorePatterns: [
     '/node_modules/',
+    '/src/modules/index.js',
     '/src/modules/.+-model/',
+    '/src/modules/.+-web-service/index.js',
     'httpError.js$',
     'routes.js$',
   ],

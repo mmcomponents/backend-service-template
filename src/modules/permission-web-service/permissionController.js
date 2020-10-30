@@ -38,7 +38,7 @@ async function getPermissionById(req, res) {
     } = await permissionService.getPermissionById(id);
     res.status(statusCode).json(permission);
   } catch (error) {
-    res.status(INTERNAL_SERVER_ERROR).json({ errorMessage: error.message });
+    res.status(error.statusCode).json({ errorMessage: error.message });
   }
 }
 
