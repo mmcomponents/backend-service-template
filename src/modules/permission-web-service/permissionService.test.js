@@ -54,11 +54,9 @@ function getPermissionMock() {
   };
 }
 
-
 function getPermissionsMock() {
   return [getPermissionMock()];
 }
-
 
 describe('permissionService', () => {
   beforeEach(() => {
