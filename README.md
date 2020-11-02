@@ -1,2 +1,2 @@
-# backend-service-toolkit
-Toolkit para setup e gerencimento dos projetos backend com Node e Express
+# backend-service-template
+Template para setup e gerencimento dos projetos backend com Node e Express
